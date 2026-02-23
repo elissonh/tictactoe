@@ -32,14 +32,15 @@ html {
 body {
   background: radial-gradient(
       circle at center,
-      var(--tertiary-color),
-      var(--primary-color)
+      color-mix(in srgb, var(--tertiary-color), transparent 10%),
+      color-mix(in srgb, var(--primary-color), transparent 10%)
     ),
-    url('bg-pattern.png');
+    url('/bg-pattern-dark.png');
   background-repeat: repeat;
   min-height: 100vh;
   margin: 0 10px 0 10px
 }
+
 
 h1 {
   font-family: 'Permanent Marker', cursive;
