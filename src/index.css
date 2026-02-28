@@ -32,12 +32,14 @@ html {
 body {
   background: radial-gradient(
       circle at center,
-      color-mix(in srgb, var(--tertiary-color), transparent 10%),
-      color-mix(in srgb, var(--primary-color), transparent 10%)
+      color-mix(in srgb, var(--primary-color), transparent 10%),
+      color-mix(in srgb, var(--secondary-color), transparent 10%)
     ),
     url('/bg-pattern-dark.png');
   background-repeat: repeat;
-  min-height: 100vh;
+  background-size: 60%;
+  height: 100vh;
+  height: 100dvh;
   margin: 0 10px 0 10px
 }
 
@@ -261,6 +263,10 @@ h1 {
 
   #game-board button {
     font-size: 5rem;
+  }
+
+  body {
+    background-size: auto;
   }
   
 }
