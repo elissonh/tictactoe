@@ -1,0 +1,13 @@
+{
+  "common": {
+    "title": "Jogo-da-Velha"
+  },
+  "game": {
+    "initialPlayer1": "Jogador 1",
+    "initialPlayer2": "Jogador 2",
+    "gameOverDescription": "Fim de Jogo!",
+    "playerWinDescription": "venceu!",
+    "drawDescription": "Deu empate!",
+    "rematchDescription": "Revanche!"
+  }
+}

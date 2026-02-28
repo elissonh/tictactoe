@@ -1,15 +1,12 @@
+import './i18n';
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next';
 
 import Player from './components/Player'
 import GameBoard from './components/GameBoard'
 import GameOver from './components/GameOver.jsx';
 import { WINNING_COMBINATIONS } from './winning-combinations.js';
 
-
-const INITIAL_PLAYERS = {
-  'X': 'Player 1',
-  'O': 'Player 2'
-};
 const INITIAL_BOARD = [
     [null, null, null],
     [null, null, null],
@@ -54,8 +51,13 @@ function getWinnerSymbol(board) {
 }
 
 function App() {
+  const { t } = useTranslation();
+  const initial_players = {
+    'X': t('game.initialPlayer1'),
+    'O': t('game.initialPlayer2')
+  };
   const [gameTurns, setGameTurns] = useState([]);
-  const [players, setPlayers] = useState(INITIAL_PLAYERS);
+  const [players, setPlayers] = useState(initial_players);
 
   const currentPlayerSymbol = getActivePlayer(gameTurns);
   const board = getBoard(gameTurns);
@@ -89,17 +91,17 @@ function App() {
 
   return (
     <main>
-      <h1>Tic-Tac-Toe</h1>
+      <h1>{t('common.title')}</h1>
       <div id='game-container'>
         <div id='players' className='highlight-player'>
           <Player 
-            initialName={INITIAL_PLAYERS.X}
+            initialName={t('game.initialPlayer1')}
             symbol='X'
             isActive={currentPlayerSymbol === 'X'}
             onChangeName={handlePlayerNameChange}
           />
           <Player
-            initialName={INITIAL_PLAYERS.O}
+            initialName={t('game.initialPlayer2')}
             symbol='O'
             isActive={currentPlayerSymbol === 'O'}
             onChangeName={handlePlayerNameChange}

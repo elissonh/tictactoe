@@ -1,0 +1,13 @@
+{
+  "common": {
+    "title": "Tic-Tac-Toe"
+  },
+  "game": {
+    "initialPlayer1": "Player 1",
+    "initialPlayer2": "Player 2",
+    "gameOverDescription": "Game Over!",
+    "playerWinDescription": "won!",
+    "drawDescription": "It's a draw!",
+    "rematchDescription": "Rematch!"
+  }
+}
