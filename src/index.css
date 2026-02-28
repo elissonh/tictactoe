@@ -200,6 +200,7 @@ h1 {
 }
 
 #game-over button {
+  font-family: 'Patrick Hand', cursive;
   display: block;
   margin: 0 auto;
   font-size: 1.5rem;
