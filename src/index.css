@@ -60,9 +60,6 @@ ol {
 
 html {
   font-family: var(--font-primary);
-}
-
-body {
   background: radial-gradient(
       circle at center,
       color-mix(in srgb, var(--primary-color), transparent 10%),
@@ -71,6 +68,10 @@ body {
     url('/bg-pattern-dark.png');
   background-repeat: repeat;
   background-size: 60%;
+}
+
+body {
+  
   min-height: 100vh;
   min-height: 100dvh;
   margin: 0 10px;
