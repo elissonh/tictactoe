@@ -26,8 +26,8 @@ export default function Player({ initialName, symbol, isActive, onChangeName }) 
     };
 
     return (
-        <div className={isActive ? 'active' : undefined}>
-            <button onClick={handleEditClick}>
+        <div className={`player-card ${isActive ? 'active' : ''}`}>
+            <button className="name-edit-button" onClick={handleEditClick}>
                 {!isEditing 
                     ? <FontAwesomeIcon icon={faPenToSquare} />
                     : <FontAwesomeIcon icon={faCheck} />

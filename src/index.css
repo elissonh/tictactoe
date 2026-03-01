@@ -1,32 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Permanent+Marker:wght@400;700&display=swap');
 
-
-:root{
-  --text-font-size: .9rem;
-  --secondary-text-color: #b0dcdf;
-  --tertiary-text-color: #8eaeb1;
+:root {
+  /* Colors */
   --primary-color: #32dae3;
   --secondary-color: #5bdee6;
   --tertiary-color: #b7eff2;
+  --secondary-text-color: #b0dcdf;
+  --tertiary-text-color: #8eaeb1;
   --gameboard-background-color: #1d3e40;
   --gameover-background-color: rgba(29, 62, 64, 0.9);
   --button-color: #4c6566;
+  /* Typography */
+  --font-primary: 'Patrick Hand', sans-serif;
+  --font-display: 'Permanent Marker', cursive;
+  --text-font-size: 0.9rem;
+  --title-font-size: calc(var(--text-font-size) * 3);
+  --game-over-title-font-size: calc(var(--text-font-size) * 4);
+  --game-over-text-font-size: calc(var(--text-font-size) * 2);
+  --game-over-button-font-size: calc(var(--text-font-size) * 1.5);
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-ms: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  /* Components */
+  --game-container-padding: var(--space-lg);
+  --game-element-padding: var(--space-ms);
+  --player-card-padding: var(--space-sm);
+  --input-padding: var(--space-sm);
+  --board-button-spacing: var(--space-md);
+  --rematch-button-padding: var(--space-sm) var(--space-md);
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --container-radius: var(--radius-md);
+  --border-width: 2px;
+  /* Shadows */
+  --container-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px var(--primary-color);
+  /* Transitions */
+  --transition-fast: 0.2s ease;
 }
 
+/* ======================
+   1. RESET & BASE
+   ====================== */
 * {
   box-sizing: border-box;
-}
-
-ol {
-  list-style: none;
   margin: 0;
   padding: 0;
 }
 
+ol {
+  list-style: none;
+}
+
 html {
-  font-family: 'Patrick Hand', sans-serif;
-  line-height: 1.5;
-  color: #ebe7ef;
+  font-family: var(--font-primary);
 }
 
 body {
@@ -38,75 +71,77 @@ body {
     url('/bg-pattern-dark.png');
   background-repeat: repeat;
   background-size: 60%;
-  height: 100vh;
-  height: 100dvh;
-  margin: 0 10px 0 10px
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 10px;
 }
 
-
 h1 {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 3rem;
-  margin: 0 auto 1.5rem auto;
+  font-family: var(--font-display);
+  font-size: var(--title-font-size);
   color: var(--gameboard-background-color);
   text-align: center;
 }
 
+/* ======================
+   2. COMPONENTS
+   ====================== */
+
 #game-container {
-  max-width: 45rem;
-  margin: 1.5rem auto 0 auto;
-  padding: 2rem;
-  border-radius: 6px;
+  max-width: 700px;
+  margin: auto;
+  padding: var(--game-container-padding);
+  border-radius: var(--container-radius);
   background: var(--gameboard-background-color);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--container-shadow);
   position: relative;
 }
 
+/* ======================
+   2.1 PLAYERS
+   ====================== */
 #players {
-  margin: 1rem 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--game-element-padding);
 }
 
-#players div {
+.player-card {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 50%;
-  border: 2px solid transparent;
-  padding: .5rem;
-  gap: .5rem;
+  border: var(--border-width) solid transparent;
+  padding: var(--player-card-padding);
+  gap: var(--player-card-padding);
 }
 
-#players.highlight-player div.active {
+.player-card.active {
   border-color: var(--primary-color);
 }
 
-#players.highlight-player div.active .player-name,
-#players.highlight-player div.active .player-symbol {
+.player-card .player-name,
+.player-card .player-symbol {
   color: var(--primary-color);
 }
 
-#players button {
+.name-edit-button {
   border: none;
   background: none;
   color: var(--tertiary-color);
-  font-size: 0.7rem;
+  font-size: var(--text-font-size);
   cursor: pointer;
   transition: color 0.2s;
-  padding: 0 0.25rem 0 0.25rem;
 }
 
-#players button:hover {
+.name-edit-button:hover {
   color: var(--primary-color);
 }
 
 .player {
   font-weight: bold;
-  gap: .9rem;
+  gap: var(--player-card-padding);
   display: flex;
   align-items: center;
   min-width: 0;
@@ -126,53 +161,54 @@ h1 {
 
 .player input {
   min-width: 0;
+  width: 100%;
   font-size: var(--text-font-size);
   border: none;
-  padding: 0.5rem;
-  animation: pulse-text 2s infinite;
+  padding: var(--input-padding);
   background-color: var(--button-color);
   text-transform: uppercase;
-  font-family: 'Patrick Hand', cursive;
+  font-family: var(--font-primary);
 }
 
 .player-symbol {
   font-size: var(--text-font-size);
   color: var(--tertiary-color);
-  font-family: 'Permanent Marker', cursive;
+  font-family: var(--font-display);
 }
 
-/* Game Board */
+/* ======================
+   2.2 GAME BOARD
+   ====================== */
 #game-board {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
-  margin: 3rem 0;
-  padding: 0;
-}
-
-#game-board ol {
-  margin: 0;
-  padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: var(--board-button-spacing);
+  margin-top: var(--game-container-padding);
 }
 
-/* Game Over */
-#game-board button {
-  aspect-ratio : 1 / 1;
+.board-button {
+  display: flex;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 10cqi, 5rem);
+  color: var(--tertiary-color);
+  background-color: var(--button-color);
+  aspect-ratio: 1 / 1;
   width: 100%;
   border: none;
-  background: var(--button-color);
-  color: var(--tertiary-color);
-  font-size: 3rem;
   cursor: pointer;
-  font-family: 'Permanent Marker', cursive;
-  padding: .4rem;
+  justify-content: center;
+  align-items: center;
+}
+.board-button:disabled {
+  cursor: not-allowed;
 }
 
+/* ======================
+   2.3 GAME OVER
+   ====================== */
 #game-over {
+  background-color: var(--gameover-background-color);
+  border-radius: var(--container-radius);
   position: absolute;
   top: 0;
   left: 0;
@@ -182,97 +218,56 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--gameover-background-color);
 }
 
 #game-over h2 {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 4rem;
-  text-align: center;
+  font-family: var(--font-primary);
+  font-size: var(--game-over-title-font-size);
   color: var(--primary-color);
-  margin: 0;
 }
 
 #game-over p {
-  font-size: 2rem;
+  font-size: var(--game-over-text-font-size);
   text-align: center;
   color: var(--tertiary-color);
 }
 
 #game-over button {
-  font-family: 'Patrick Hand', cursive;
-  display: block;
-  margin: 0 auto;
-  font-size: 1.5rem;
-  background: none;
-  border: 2px solid var(--primary-color);
   color: var(--primary-color);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  font-family: var(--font-primary);
+  font-size: var(--game-over-button-font-size);
+  background: none;
+  border: var(--border-width) solid var(--primary-color);
+  border-radius: var(--container-radius);
+  padding: var(--rematch-button-padding);
+  margin-top: var(--game-element-padding);
   cursor: pointer;
-  transition: all 0.2s, color 0.2s;
-  box-shadow: 0 0 8px var(--gameboard-background-color);
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 #game-over button:hover {
   background: var(--secondary-color);
   color: var(--gameover-background-color);
   transform: scale(1.1);
-  box-shadow: 0 0 20px var(--primary-color);
+  box-shadow: var(--shadow-glow);
 }
 
-@media (min-width: 600px) {
-  :root{
-    --text-font-size: 1rem;
-  }
-
-  #game-board ol {
-    margin: 0 4rem;
-  }
-
-  #players button {
-    font-size: .8rem;
-  }
-
-  #game-board button {
-    font-size: 4rem;
-  }
-  
-  #players div {
-    padding: .75rem;
-    gap: .75rem;
-  }
+/* Acessibility */
+#game-over button:focus-visible,
+#players button:focus-visible,
+#game-board button:focus-visible {
+  outline: var(--border-width) solid var(--primary-color);
+  outline-offset: var(--border-width);
 }
 
-@media (min-width: 700px) {
-  :root{
-    --text-font-size: 1rem;
-  }
-
-  #game-board ol {
-    margin: 0 4rem;
-  }
-
-  #players div {
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  #players button {
-    font-size: 0.9rem;
-  }
-
-  #game-board button {
-    font-size: 5rem;
-  }
-
-  body {
-    background-size: auto;
-  }
-  
+.player input:focus-visible {
+  outline: var(--border-width) solid var(--primary-color);
+  outline-offset: calc(var(--border-width) / 2);
 }
 
-
+/* ======================
+   3. ANIMATIONS
+   ====================== */
 @keyframes pulse-text {
   0% {
     color: var(--secondary-text-color);
@@ -282,5 +277,40 @@ h1 {
   }
   100% {
     color: var(--secondary-text-color);
+  }
+}
+
+/* ======================
+   4. MEDIA QUERIES
+   ====================== */
+
+@media (min-width: 600px) {
+  :root {
+    /* Typography */
+    --text-font-size: 1rem;
+    /* Components */
+    --game-container-padding: var(--space-lg);
+    --game-element-padding: var(--space-md);
+    --player-card-padding: var(--space-ms);
+    --input-padding: var(--space-ms);
+    --board-button-spacing: var(--space-lg);
+    --rematch-button-padding: var(--space-ms) var(--space-lg);
+  }
+}
+
+@media (min-width: 700px) {
+  :root {
+    /* Typography */
+    --text-font-size: 1.1rem;
+  }
+  body {
+    background-size: auto;
+  }
+}
+
+/* Only runs if the user hasn't explicitly requested reduced motion in his settings. */
+@media (prefers-reduced-motion: no-preference) {
+  .player input {
+    animation: pulse-text 2s infinite;
   }
 }
