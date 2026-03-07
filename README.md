@@ -1,28 +1,30 @@
-# ✨ Tic Tac Toe (React)
-A simple, two-player tic-tac-toe game built with React. The interface is designed with mobile-first approach and is fully responsive across devices.
+[![en](https://img.shields.io/badge/lang-en-red.svg)](./README-en.md)
 
-## 🎯 Features
-- Two-player mode only.
-- Displays current player turn.
-- Announces winner or draw.
-- Option to restart the game.
-- Minimal UI.
+# ✨ Jogo da Velha (React)
+Um jogo da velha construído utilizando React. A interface foi construída utilizando a abordagem mobile-first("dispositivos móveis primeiro") e se adapta a qualquer tamanho de tela.
 
-## 📝 How to run(steps)
-- Clone the repository:
+## 🎯 Funcionalidades
+- Apenas dois jogadores.
+- Exibe o turno de cada jogador.
+- Anuncia vencedor ou empate.
+- Poussi opção para reiniciar o jogo/revanche.
+- Possui interface simples.
+
+## 📝 Como executar(passos)
+- Clone o repositório:
 ```bash
 git clone https://github.com/your-username/tic-tac-toe-react.git
 ```
-- Install dependencies:
+- Instale as dependências:
 ```bash
 cd tic-tac-toe-react
 npm install
 ```
-- Run the app:
+- Execute o app:
 ```bash
 npm run preview
 ```
-- Open http://localhost:4173 to view it in the browser.
+- Abra http://localhost:4173 para visualizar no navegador.
 
-## 🚀 Demo
+## 🚀 Demonstração
 [elissonh.github.io/tictactoe](http://elissonh.github.io/tictactoe/)
